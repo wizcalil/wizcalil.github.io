@@ -7,9 +7,10 @@ window.onload = function(){
 	var div  = puzarea.getElementsByTagName('div');
 	
 	for (var a = 0 ; a<div.length ; a++){
-			div[a].className = 'puzzlepiece';
-		div[a].style.left = (a%4*100)+'px';
+		div[a].className = 'puzzlepiece';
 		div[a].style.top = (parseInt(a/4)*100) + 'px';
+		div[a].style.left = (a%4*100)+'px';
+		
 		div[a].style.backgroundPosition= '-' + div[a].style.left + ' ' + '-' + div[a].style.top;
 		
 	}
