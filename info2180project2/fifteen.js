@@ -4,7 +4,7 @@
 window.onload = function(){
 	
 	var puzarea = document.getElementById('puzzlearea');
-	var div  = puzarea.getElementByTagName('div');
+	var div  = puzarea.getElementsByTagName('div');
 	
 	for (var a = 0 ; a<div.length ; a++){
 			div[a].className = 'puzzlepiece';
