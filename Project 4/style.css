@@ -1,0 +1,108 @@
+body 
+{
+    width: 960px;
+    margin: auto;
+    background-color: white;
+    background-image: url(img/bg.jpg);
+    background-position-x: -200px;
+    background-position-y: -30px;
+    color: #FFFFFF;;
+          
+}
+
+h1
+{
+    margin-bottom: -1%;
+}
+
+#title
+{
+    color: #00B8FF;
+    font-size: 55px;
+    margin-left: 5%;
+    padding: 1%;
+    padding-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 6px;
+}
+
+input[type="text"],input[type="password"]
+{
+    background-color: rgba(45, 238, 153, 0.38);
+    color: white;
+    border-radius: 6px;
+}
+input[type="button"]
+{
+    background-color: #00B8FF;
+    border-radius: 6px;
+}
+
+#label
+{
+    padding-right: 10px;
+}
+#login, #home
+{
+    margin-top: -2%;
+    background-color: rgba(213, 97, 235, 0.65);
+    padding: 2%;
+    border-radius: 10px;
+    
+    margin-right: 5%;
+}
+
+#content
+{
+    padding-left: 5%;
+    padding-top: 5%;
+    width: 960px;
+    margin: auto;
+}
+
+.error
+{
+    color: #f00;
+}
+
+#msgid
+{
+    display: none;
+}
+
+#logoutbutton
+{
+    float: right;
+}
+
+#add_user_button
+{
+    float: right;    
+}
+
+#msg_body
+{
+    width: 800px;
+}
+
+#newMessage
+{
+    font-weight: bolder;
+    color: rgb(58, 255, 58);
+}
+
+#oldMessage
+{
+    font-weight: normal;
+    color: black;
+}
+
+#message
+{
+    color: white;
+}
+
+#messagebody
+{
+    display: none;
+}
