@@ -1,0 +1,213 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{
+	min-height:100%
+}
+
+body{
+	
+	
+	height:100%
+	font-family: Arial,Helvetica,sans-serif;
+	color:#06C;
+	font-size : 13px;
+	line-height: 20px;
+	min-width:998px;
+	border-top : 3px solid #666;
+	background : url(../images/BG.jpg) repeat;
+	
+}
+
+#formWrapper{
+	padding:70px 0 0 0px;
+	height:100%;
+	
+
+}
+#formWrapper{
+	width :350px;
+	margin: auto;
+	position: relative;
+	
+}
+#formWrappertop{
+	
+		background:url(../images/formWrappertop.png) no-repeat;
+		height:22px;/*specify height, standing on its own, it has zero height making it seem invisible*/
+}
+
+#formWrapperMiddle{
+	
+	background:url(../images/formWrapperMiddle.png) repeat-y;/*repeat-y prevent the image from repating in the x direction*/
+	
+	height:240px;/*specify height,standing on its own, it has zero height making it seem invisible*/
+	
+}
+#formWrapperbottom{
+	background:url(../images/formWrapperbottom.png)no-repeat;
+	height:22px;/*specify height,standing on its own, it has zero height making it seem invisible*/
+}
+
+#formWrapper h2{
+	margin-top:-5px;
+	margin-left:30px;
+	font-size: 20px;
+	font-weight:bold;
+	font-family: Myriad Pro;
+	text-transform: uppercase;
+	position:absolute;
+	text-shadow:#0CC 2px 2px 2px;
+}
+
+/*pick up at username*/
+#username_input{
+	margin-left:25px;
+	position :absolute;
+	width:300;
+	height:50px;
+	margin-top:40px;
+	
+		
+}
+#username_inputleft{
+	float:left;
+	background:url(../images/input_left.png)no-repeat;
+	width:12px;
+	height:50px;
+}
+
+#username_inputmiddle{
+	float:left;
+	background:url(../images/input_middle.png) repeat-x;
+	width:276px;
+	height:50px;
+}
+#username_inputright{
+	float:left;
+	background:url(../images/input_right.png) no-repeat;
+	width:12px;
+	height:50px;
+}
+
+#username{
+	display:block;
+	width:276px;
+	height:45px;
+	background:transparent;
+	border:0;
+	color:#bdbdbd;
+	font-family: helvetica, sans-serif;
+	font-size:14px;
+	padding-left:20px;
+	outline:none;
+}
+#usericon{
+	
+	position:absolute;
+	display:block;
+	margin-top:-28px;
+	float:left;
+	padding-right:10px;
+}
+
+#password_input{
+	margin-left:25px;
+	position:absolute;
+	width:300;
+	height:50px;
+	margin-top:100px;
+	
+}
+#password_inputleft{
+	float:left;
+	background:url(../images/input_left.png) no-repeat;
+	width:12px;
+	height:50px
+}
+	
+#password_inputmiddle {
+	float:left;
+	background:url(../images/input_middle.png) repeat-x;
+	width:276px;
+	height:50px;
+}
+
+#password_inputright {
+	float:left;
+	background:url(../images/input_right.png) no-repeat;
+	width:12px;
+	height:50px;
+}
+
+#passicon{
+	display:block;
+	position:absolute;
+	margin-top:-32px;
+	float:left;
+	margin-left:1px;
+}
+#password{
+	display:block;
+	width:276px;
+	height:45px;
+	background:transparent;
+	border:0;
+	color:#bdbdbd;
+	font-family: helvetica, sans-serif;
+	font-size:14px;
+	padding-left:20px;
+	outline:none;
+}
+#submit_input{
+	float:left;
+	position:relative;
+	padding:0;
+	margin-top:160px;
+	margin-left:25px;
+	width:300px;
+	height:40px;
+	border:0;
+}
+#submit1 {
+	position:absolute;
+	z-index: 10;
+	border:0;
+}
+#submit2 {
+	position:absolute;
+	margin-top:0px;
+	border:0;
+}
+
+#divfooter{
+	display:block;
+	margin:auto;
+	position:absolute;
+	
+}
+#navigation{
+	
+	background: url(../images/navigate.png) repeat-x;
+	color:#FFF;
+	height:40px;
+	width:auto;
+	padding:0 0 0 21px;
+}
+#navigation ul{
+	text-align: center;
+	padding:10px;	
+}
+#navigation ul li { 
+	display: inline;
+	font-size: 16px;
+	font-family: Myriad Pro;
+	padding: 0 15px;
+	text-shadow:#666 2px 2px 2px;
+	
+	
+	}
+#navigation ul li:hover{
+	font-weight:bold;
+	text-shadow:#0CC 2px 2px 2px;
+}

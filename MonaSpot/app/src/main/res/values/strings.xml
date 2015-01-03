@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MonaSpot</string>
+    <string-array name="category_array">
+        <item>Home</item>
+        <item>Ourvle</item>
+        <item>SAS</item>
+        <item>Uwi Email</item>
+        <item>Navigation</item>
+    </string-array>
+
+
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Ourvle</string>
+    <string name="title_section3">Sas</string>
+    <string name="title_section4">Uwi Email</string>
+    <string name="title_section5">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

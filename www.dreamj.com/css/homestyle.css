@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+	min-height:100%
+}
+
+#navigation{
+	display:inline;
+	background: url(../images/navigate.png) repeat-x;
+	color:#F00;
+}
+
