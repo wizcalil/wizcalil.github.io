@@ -30,10 +30,17 @@ public class UwiEmail  extends Fragment{
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(searchURL);
+
+        if (savedInstanceState == null) {
+            webView.loadUrl(searchURL);
+        } else {
+            webView.restoreState(savedInstanceState);
+        }
 
         return rootView;
     }
+
+
 
     @Override
     public void onAttach(Activity activity) {

@@ -36,7 +36,7 @@ public class InfiniteScrollAdapter<T> extends ArrayAdapter<T>{
         View view;
         if(convertView == null){
             view = LayoutInflater.from(context).inflate(R.layout.row_layout, null);
-            view.setTag(view.findViewById(R.id.textView));
+            view.setTag(view.findViewById(R.id.textView1));
         }else{
             view = convertView;
         }

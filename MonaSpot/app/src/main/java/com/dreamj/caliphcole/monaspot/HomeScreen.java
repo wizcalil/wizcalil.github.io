@@ -31,15 +31,18 @@ public class HomeScreen extends Fragment implements AbsListView.OnScrollListener
                              Bundle savedInstanceState) {
 
         mHandler = new Handler();
+
+        View footer = View.inflate(getActivity().getApplicationContext(),R.layout.progress_bar_footer,null);
+        progressBar = (ProgressBar) footer.findViewById(R.id.progressBar);
          rootView = inflater.inflate(R.layout.homescreen, container, false);
         listView = (ListView)rootView.findViewById(R.id.listView);
 
-        View footer = View.inflate(getActivity().getApplicationContext(),R.layout.progress_bar_footer,null);
+
         listView.addFooterView(footer);
 
 
 
-        String[] vals = AllNewsFeedsActivity.newsFeedArray();
+        String[] vals = fibonacciCalculator.getfibonacci();
         adapter = new InfiniteScrollAdapter<String>(getActivity(), vals, 20, 10);
         listView.setAdapter(adapter);
         listView.setOnScrollListener(this); //listen for a scroll movement to the bottom
@@ -76,4 +79,6 @@ public class HomeScreen extends Fragment implements AbsListView.OnScrollListener
             hasCallback = true;
         }
     }
+
+
 }
