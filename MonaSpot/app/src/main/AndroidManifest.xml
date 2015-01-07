@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dreamj.caliphcole.monaspot" >
 
-
+<uses-sdk
+    android:minSdkVersion="11"
+    android:targetSdkVersion="19"/>
 
     <permission
         android:name="com.dreamj.caliphcole.monaspot.permission.MAPS_RECEIVE"
@@ -17,6 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
+        android:name ="com.dreamj.caliphcole.monaspot.app.AppController"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -33,9 +36,10 @@
         <activity
             android:name="com.dreamj.caliphcole.monaspot.Splash"
             android:configChanges="locale|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
-            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
+            android:label="@string/app_name"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
