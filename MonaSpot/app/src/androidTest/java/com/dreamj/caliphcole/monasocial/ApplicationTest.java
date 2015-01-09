@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

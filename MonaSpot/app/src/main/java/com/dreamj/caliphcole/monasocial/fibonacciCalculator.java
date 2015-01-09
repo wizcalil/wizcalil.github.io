@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import java.util.ArrayList;
 import java.util.List;

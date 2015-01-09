@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.content.Context;
 import android.text.TextUtils;

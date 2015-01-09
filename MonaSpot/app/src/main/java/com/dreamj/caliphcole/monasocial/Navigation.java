@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -123,6 +123,8 @@ public class Navigation extends Fragment {
         super.onLowMemory();
         mapView.onLowMemory();
     }
+
+
 }
 
 

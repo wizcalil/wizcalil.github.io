@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;

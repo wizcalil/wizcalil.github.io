@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot.adapter;
+package com.dreamj.caliphcole.monasocial.adapter;
 
 /**
  * Created by CaliphCole on 01/06/2015.
@@ -18,10 +18,10 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.dreamj.caliphcole.monaspot.FeedImageView;
-import com.dreamj.caliphcole.monaspot.R;
-import com.dreamj.caliphcole.monaspot.app.AppController;
-import com.dreamj.caliphcole.monaspot.data.FeedItem;
+import com.dreamj.caliphcole.monasocial.FeedImageView;
+import com.dreamj.caliphcole.monasocial.R;
+import com.dreamj.caliphcole.monasocial.app.AppController;
+import com.dreamj.caliphcole.monasocial.data.FeedItem;
 
 import java.util.List;
 

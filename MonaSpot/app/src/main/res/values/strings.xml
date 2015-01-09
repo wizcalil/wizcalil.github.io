@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MonaSpot</string>
+    <string name="app_name">MonaSocial</string>
     <string-array name="category_array">
         <item>NewsFeeds</item>
         <item>Ourvle</item>
@@ -16,6 +16,7 @@
     <string name="title_section3">Sas</string>
     <string name="title_section4">Search Engine</string>
     <string name="title_section5">Navigation</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7406673040779336/1443439002</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

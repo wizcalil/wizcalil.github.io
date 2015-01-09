@@ -72,13 +72,15 @@
             android:paddingRight="@dimen/feed_item_status_pad_left_right"
             android:textColorLink="@color/link" />
 
-        <com.dreamj.caliphcole.monaspot.FeedImageView
+        <com.dreamj.caliphcole.monasocial.FeedImageView
             android:id="@+id/feedImage1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:scaleType="fitXY"
-            android:visibility="visible" />
+            android:visibility="visible"
+
+            />
     </LinearLayout>
 
 </LinearLayout>

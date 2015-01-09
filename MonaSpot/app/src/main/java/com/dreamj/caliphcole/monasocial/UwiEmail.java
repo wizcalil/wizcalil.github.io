@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,10 +12,11 @@ import android.webkit.WebViewClient;
 /**
  * Created by CaliphCole on 12/30/2014.
  */
-public class Ourvle extends Fragment {
+public class UwiEmail  extends Fragment{
+
     public static final String ARG_CATEGORY_NUMBER = "category_number";
 
-    public Ourvle() {
+    public UwiEmail() {
         // Empty constructor required for fragment subclasses
     }
 
@@ -25,11 +26,10 @@ public class Ourvle extends Fragment {
         View rootView = inflater.inflate(R.layout.webview, container, false);
 
         WebView webView = (WebView) rootView.findViewById(R.id.webView);
-        String searchURL = "http://ourvle.mona.uwi.edu/";
+        String searchURL = "https://www.google.com";
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-
 
         if (savedInstanceState == null) {
             webView.loadUrl(searchURL);
@@ -39,6 +39,8 @@ public class Ourvle extends Fragment {
 
         return rootView;
     }
+
+
 
     @Override
     public void onAttach(Activity activity) {

@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot.data;
+package com.dreamj.caliphcole.monasocial.data;
 
 /**
  * Created by CaliphCole on 01/06/2015.

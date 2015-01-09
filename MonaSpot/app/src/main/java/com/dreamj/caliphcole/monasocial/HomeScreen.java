@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,9 +15,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.dreamj.caliphcole.monaspot.adapter.FeedListAdapter;
-import com.dreamj.caliphcole.monaspot.app.AppController;
-import com.dreamj.caliphcole.monaspot.data.FeedItem;
+import com.dreamj.caliphcole.monasocial.adapter.FeedListAdapter;
+import com.dreamj.caliphcole.monasocial.app.AppController;
+import com.dreamj.caliphcole.monasocial.data.FeedItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +38,7 @@ public static final String ARG_CATEGORY_NUMBER = "category_number";
     private ListView listView;
     private FeedListAdapter listAdapter;
     private List<FeedItem> feedItems;
-    private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
+    private String URL_FEED = "http://192.168.0.5/www.dreamj.com/monaspot/spotbackend.php";//http://api.androidhive.info/feed/feed.json";
 
     private FragmentActivity faActivity;
 

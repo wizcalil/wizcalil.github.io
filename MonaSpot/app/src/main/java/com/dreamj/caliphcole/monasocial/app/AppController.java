@@ -1,4 +1,4 @@
-package com.dreamj.caliphcole.monaspot.app;
+package com.dreamj.caliphcole.monasocial.app;
 
 import android.app.Application;
 import android.text.TextUtils;
@@ -7,7 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-import com.dreamj.caliphcole.monaspot.volley.LruBitmapCache;
+import com.dreamj.caliphcole.monasocial.volley.LruBitmapCache;
 
 /**
  * Created by CaliphCole on 01/06/2015.

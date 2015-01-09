@@ -1,16 +1,15 @@
-package com.dreamj.caliphcole.monaspot;
+package com.dreamj.caliphcole.monasocial;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 /**
  * Created by CaliphCole on 12/30/2014.
@@ -19,11 +18,12 @@ public class Splash extends Activity {
 
 
     Thread runTime;
-    MediaPlayer song;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -40,8 +40,7 @@ public class Splash extends Activity {
             }
         });
 
-        //song = MediaPlayer.create(Splash1.this,R.raw.splash);
-        //song.start();
+
         runTime = new Thread() {
             public void run() {
                 try {
@@ -54,7 +53,7 @@ public class Splash extends Activity {
                     e.printStackTrace();
                 } finally {
                     Intent main = new Intent(
-                            "com.dreamj.caliphcole.monaspot.MainActivity");
+                            "com.dreamj.caliphcole.monasocial.MainActivity");
                     startActivity(main);
                 }
 
@@ -81,18 +80,5 @@ public class Splash extends Activity {
         //song.release();
          finish();
     }
-    @Override
-    protected void onResume(){
 
-        super.onResume();
-        SharedPreferences settings = getSharedPreferences("prefs", 0);
-        boolean firstRun = settings.getBoolean("firstRun", true);
-        if (!firstRun) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            Log.d("TAG1", "firstRun(false): " + Boolean.valueOf(firstRun).toString());
-        } else {
-            Log.d("TAG1", "firstRun(true): " + Boolean.valueOf(firstRun).toString());
-        }
-    }
 }
