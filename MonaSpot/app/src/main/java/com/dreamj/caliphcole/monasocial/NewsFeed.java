@@ -30,15 +30,15 @@ import java.util.List;
 /**
  * Created by CaliphCole on 12/28/2014.
  */
-public class HomeScreen extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class NewsFeed extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-public static final String ARG_CATEGORY_NUMBER = "category_number";
+public static final String ARG_CATEGORY_NUMBER = "newsfeed";
     View rootView;
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter listAdapter;
     private List<FeedItem> feedItems;
-    private String URL_FEED = "http://192.168.0.5/www.dreamj.com/monaspot/spotbackend.php";//http://api.androidhive.info/feed/feed.json";
+    private String URL_FEED = "http://test123calil.co.nf/monaspot/spotbackend.php";//http://api.androidhive.info/feed/feed.json";
 
     private FragmentActivity faActivity;
 
@@ -107,6 +107,14 @@ public static final String ARG_CATEGORY_NUMBER = "category_number";
         return View;
     }
 
+    public static NewsFeed newInstance(int someInt, String someTitle) {
+        NewsFeed nfragment = new NewsFeed();
+        Bundle args = new Bundle();
+        args.putInt(ARG_CATEGORY_NUMBER, someInt);
+        nfragment.setArguments(args);
+        return nfragment;
+    }
+
     /**
      * Parsing json reponse and passing the data to feed view list adapter
      * */
@@ -151,6 +159,8 @@ public static final String ARG_CATEGORY_NUMBER = "category_number";
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
     }
+
+
 }
 
 

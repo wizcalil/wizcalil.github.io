@@ -11,6 +11,8 @@
         android:id="@+id/webView"
         ></WebView>
 
+
+
     <fragment
         android:name="com.dreamj.caliphcole.monasocial.AdManager$PlaceholderFragment"
         android:layout_width="match_parent"

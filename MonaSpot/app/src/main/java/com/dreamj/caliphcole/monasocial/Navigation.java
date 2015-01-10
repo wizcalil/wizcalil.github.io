@@ -25,7 +25,7 @@ public class Navigation extends Fragment {
     View rootView;
     MapView mapView;
 
-    public static final String ARG_CATEGORY_NUMBER = "category_number";
+    public static final String ARG_CATEGORY_NUMBER = "navigate";
 
     public Navigation() {
         // Empty constructor required for fragment subclasses
@@ -124,7 +124,13 @@ public class Navigation extends Fragment {
         mapView.onLowMemory();
     }
 
-
+    public static Navigation newInstance(int someInt, String someTitle) {
+        Navigation navfragment = new Navigation();
+        Bundle args = new Bundle();
+        args.putInt(ARG_CATEGORY_NUMBER, someInt);
+        navfragment.setArguments(args);
+        return navfragment;
+    }
 }
 
 
