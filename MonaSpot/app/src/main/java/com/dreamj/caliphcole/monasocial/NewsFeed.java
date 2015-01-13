@@ -1,13 +1,16 @@
 package com.dreamj.caliphcole.monasocial;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -25,15 +28,27 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
 
 /**
  * Created by CaliphCole on 12/28/2014.
  */
-public class NewsFeed extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class NewsFeed extends Fragment {
 
-public static final String ARG_CATEGORY_NUMBER = "newsfeed";
-    View rootView;
+    public static final String ARG_CATEGORY_NUMBER = "newsfeed";
+    private static int REFRESH_TIME_IN_SECONDS = 5;
+
+
+    public  SwipeRefreshLayout swipeRefreshLayout;
+    public View View;
+    Cache cache;
+    Cache.Entry entry;
+    private List<FeedItem> calcache;
+    private List<FeedItem> calupdate;
+
+
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter listAdapter;
@@ -42,14 +57,23 @@ public static final String ARG_CATEGORY_NUMBER = "newsfeed";
 
     private FragmentActivity faActivity;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         faActivity  = (FragmentActivity)    super.getActivity();
-        View View = inflater.inflate(R.layout.homescreen, container, false);
+
+         View = inflater.inflate(R.layout.homescreen, container, false);
+
+
+
+
 
         listView = (ListView) View.findViewById(R.id.listView);
+
+
+
 
         feedItems = new ArrayList<FeedItem>();
 
@@ -62,48 +86,36 @@ public static final String ARG_CATEGORY_NUMBER = "newsfeed";
 
 
 
+
         // We first check for cached request
-        Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_FEED);
-        if (entry != null) {
+        // cache = AppController.getInstance().getRequestQueue().getCache();
+        /// entry = cache.get(URL_FEED);
+        /*if (entry != null) {
             // fetch the data from cache
-            try {
-                String data = new String(entry.data, "UTF-8");
-                try {
-                    parseJsonFeed(new JSONObject(data));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            cache();
 
-        } else {
+        } else {*/
             // making fresh volley request and getting json
-            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    URL_FEED, null, new Response.Listener<JSONObject>() {
 
-                @Override
-                public void onResponse(JSONObject response) {
-                    VolleyLog.d(TAG, "Response: " + response.toString());
-                    if (response != null) {
-                        parseJsonFeed(response);
-                    }
-                }
-            }, new Response.ErrorListener() {
+       // }
 
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-                }
-            });
+        cache = AppController.getInstance().getRequestQueue().getCache();
+        Calendar calendar = Calendar.getInstance();
+        long serverDate = AppController.getInstance().getRequestQueue().getCache().get(URL_FEED).serverDate;
 
-            // Adding request to volley request queue
-            AppController.getInstance().addToRequestQueue(jsonReq);
+        entry = cache.get(URL_FEED);
+        if (entry != null) {
+            if (getMinutesDifference(serverDate, calendar.getTimeInMillis()) >= 30) {
+                AppController.getInstance().getRequestQueue().getCache().invalidate(URL_FEED, true);
+                update();
+            }else{
+                cache();
+            }
+        }else{
+            update();
         }
 
-
-
+        initUI();
         return View;
     }
 
@@ -119,6 +131,8 @@ public static final String ARG_CATEGORY_NUMBER = "newsfeed";
      * Parsing json reponse and passing the data to feed view list adapter
      * */
     private void parseJsonFeed(JSONObject response) {
+
+
         try {
             JSONArray feedArray = response.getJSONArray("feed");
 
@@ -142,7 +156,7 @@ public static final String ARG_CATEGORY_NUMBER = "newsfeed";
                         .getString("url");
                 item.setUrl(feedUrl);
 
-                feedItems.add(item);
+                feedItems.add(0,item);
             }
 
             // notify data changes to list adapater
@@ -154,10 +168,143 @@ public static final String ARG_CATEGORY_NUMBER = "newsfeed";
 
 
 
-    @Override
+   /* @Override
     public void onRefresh() {
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
+        Log.d(TAG, "onRefresh SwipeRefreshLayout");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                stopSwipeRefresh();
+            }
+        }, REFRESH_TIME_IN_SECONDS * 1000);
+    }
+    private void stopSwipeRefresh() {
+        swipeRefreshLayout.setRefreshing(false);
+    }*/
+
+    private void initUI() {
+
+        swipeRefreshLayout = (SwipeRefreshLayout) View.findViewById(R.id.container);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+
+
+
+            public void update(){
+                JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                        URL_FEED, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        VolleyLog.d(TAG, "Response: " + response.toString());
+                        if (response != null) {
+                            parseJsonFeed(response);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    }
+                });
+
+                // Adding request to volley request queue
+                AppController.getInstance().addToRequestQueue(jsonReq);
+
+            }
+            @Override
+            public void onRefresh() {
+
+                listAdapter.clearData();
+                update();
+
+
+                listAdapter = new FeedListAdapter(getActivity(), feedItems);
+
+
+                listAdapter.notifyDataSetChanged();
+
+
+                listView.setAdapter(listAdapter);
+                Log.d(TAG, "onRefresh SwipeRefreshLayout");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        stopSwipeRefresh();
+                    }
+                }, REFRESH_TIME_IN_SECONDS * 1000);
+            }
+            private void stopSwipeRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+
+        });
+        swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_light,
+                android.R.color.white, android.R.color.holo_blue_light,
+                android.R.color.white);
+
+
+
+
+
+    }
+
+
+    private void update(){
+        Toast.makeText(getActivity().getApplicationContext()," Updated",
+                Toast.LENGTH_SHORT).show();
+        JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                URL_FEED, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                VolleyLog.d(TAG, "Response: " + response.toString());
+                if (response != null) {
+                    parseJsonFeed(response);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+            }
+        });
+
+        // Adding request to volley request queue
+        AppController.getInstance().addToRequestQueue(jsonReq);
+
+    }
+
+    private void cache(){
+
+        Toast.makeText(getActivity().getApplicationContext()," No Updates, pulled from cache",
+                Toast.LENGTH_SHORT).show();
+
+        try {
+            String data = new String(entry.data, "UTF-8");
+            try {
+                parseJsonFeed(new JSONObject(data));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static long getMinutesDifference(long timeStart,long timeStop){
+        long diff = timeStop - timeStart;
+        long diffMinutes = diff / (60 * 1000);
+
+        return  diffMinutes;
+    }
+
+    public void upButton(){
+        listView.setSelection(0);
     }
 
 

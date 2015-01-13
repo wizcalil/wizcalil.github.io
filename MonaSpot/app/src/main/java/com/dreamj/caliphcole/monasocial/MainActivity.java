@@ -72,8 +72,8 @@ public class MainActivity extends ActionBarActivity
 
             case 0:
 
-                  /*  mTitle = getString(R.string.title_section1);
-                    newsfeedFragment = new NewsFeed();
+                   mTitle = getString(R.string.title_section1);
+                  /*  newsfeedFragment = new NewsFeed();
                     Bundle args0 = new Bundle();
                     args0.putInt(NewsFeed.ARG_CATEGORY_NUMBER, position);
                     newsfeedFragment.setArguments(args0);
@@ -84,7 +84,7 @@ public class MainActivity extends ActionBarActivity
                      fragmentManager0.beginTransaction()
                             .replace(R.id.container,newsfeedFragment)
                             .commit();*/
-               // Log.v("myApp", "case 0"
+
 
                 try{
                 FragmentManager fm0 = getSupportFragmentManager();
@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity
                 }
                 if (emailFragment.isAdded()) { ft1.hide(emailFragment); }
                 if (sasFragment.isAdded()) { ft1.hide(sasFragment); }
-                if (newsfeedFragment.isAdded()) { ft1.hide(newsfeedFragment); }
+               if (newsfeedFragment.isAdded()) { ft1.hide(newsfeedFragment); }
                 if (navFragment.isAdded()) { ft1.hide(navFragment); }
 
                 ft1.commit();
@@ -219,7 +219,7 @@ public class MainActivity extends ActionBarActivity
                 }
                 if (ourvleFragment.isAdded()) { ft4.hide(ourvleFragment); }
                 if (sasFragment.isAdded()) { ft4.hide(sasFragment); }
-                if (newsfeedFragment.isAdded()) { ft4.hide(newsfeedFragment); }
+                //if (newsfeedFragment.isAdded()) { ft4.hide(newsfeedFragment); }
                 if (emailFragment.isAdded()) { ft4.hide(emailFragment); }
 
                 ft4.commit();
@@ -265,7 +265,24 @@ public class MainActivity extends ActionBarActivity
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
+            if(mTitle.equals("Sas") || mTitle.equals("Ourvle") || mTitle.equals("Search Engine")){
+                menu.findItem(R.id.backButton).setVisible(true);
+                menu.findItem(R.id.homeButton).setVisible(true);
+                menu.findItem(R.id.upButton).setVisible(false);
+            }else if(mTitle.equals("NewsFeed") || mTitle.equals("MonaSocial")){
+
+                menu.findItem(R.id.upButton).setVisible(true);
+                menu.findItem(R.id.backButton).setVisible(false);
+                menu.findItem(R.id.homeButton).setVisible(false);
+            }
+
+            else{
+                menu.findItem(R.id.backButton).setVisible(false);
+                menu.findItem(R.id.homeButton).setVisible(false);
+                menu.findItem(R.id.upButton).setVisible(false);
+            }
             return true;
+
         }
         return super.onCreateOptionsMenu(menu);
     }
@@ -280,9 +297,110 @@ public class MainActivity extends ActionBarActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == R.id.backButton){
+
+                try {
+                    if (ourvleFragment.webView.canGoBack() == true && mTitle.equals("Ourvle")) {
+                        ourvleFragment.webView.goBack();
+                        return true;
+                    }
+                     }catch(NullPointerException e){
+                        e.printStackTrace();
+                    }
+
+                try {
+                    if (sasFragment.webView.canGoBack() == true && mTitle.equals("Sas")) {
+
+                        sasFragment.webView.goBack();
+                        return true;
+                    }
+
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+
+                }
+
+                 try{
+                    if(emailFragment.webView.canGoBack() == true && mTitle.equals("Search Engine")){
+
+                    emailFragment.webView.goBack();
+                    return true;
+
+                    }
+
+
+                }catch(NullPointerException e){
+
+                e.printStackTrace();
+                }
+
+
+        }else if(id == R.id.homeButton){
+
+
+            try {
+                if (ourvleFragment.webView.canGoBack() == true && mTitle.equals("Ourvle")) {
+
+                    ourvleFragment.webView.loadUrl("http://ourvle.mona.uwi.edu/");
+
+                    return true;
+                }
+            }catch(NullPointerException e){
+                e.printStackTrace();
+            }
+
+            try {
+                if (sasFragment.webView.canGoBack() == true && mTitle.equals("Sas")) {
+
+
+                    sasFragment.webView.loadUrl("http://sas.uwimona.edu.jm:9010/pls/data_mona/twbkwbis.P_WWWLogin");
+
+                    return true;
+                }
+
+            }catch (NullPointerException e){
+                e.printStackTrace();
+
+            }
+
+            try{
+                if(emailFragment.webView.canGoBack() == true && mTitle.equals("Search Engine")){
+
+                    emailFragment.webView.loadUrl("http://www.google.com");
+
+                    return true;
+
+                }
+
+
+            }catch(NullPointerException e){
+
+                e.printStackTrace();
+            }
+
+        }else if(id == R.id.upButton){
+
+            try{
+
+
+                newsfeedFragment.upButton();
+
+
+
+            }catch(NullPointerException e){
+
+                e.printStackTrace();
+            }
+
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 
 

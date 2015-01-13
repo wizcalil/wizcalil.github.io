@@ -3,7 +3,7 @@
 
     <string name="app_name">MonaSocial</string>
     <string-array name="category_array">
-        <item>NewsFeeds</item>
+        <item>NewsFeed</item>
         <item>Ourvle</item>
         <item>SAS</item>
         <item>Search Engine</item>
@@ -11,7 +11,7 @@
     </string-array>
 
 
-    <string name="title_section1">NewsFeeds</string>
+    <string name="title_section1">NewsFeed</string>
     <string name="title_section2">Ourvle</string>
     <string name="title_section3">Sas</string>
     <string name="title_section4">Search Engine</string>
@@ -20,8 +20,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Quick Search</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Details</string>
     <string name="action_websearch">Web search</string>
+    <string name="action_back">Go Back</string>
+
+    <string name="action_home">Home Screen</string>
+    <string name="action_up">Top Of List</string>
+
+
 
 
 

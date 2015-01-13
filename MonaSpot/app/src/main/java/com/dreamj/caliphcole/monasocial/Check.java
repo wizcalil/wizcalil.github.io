@@ -38,4 +38,9 @@ public class Check extends Activity {
             finish();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

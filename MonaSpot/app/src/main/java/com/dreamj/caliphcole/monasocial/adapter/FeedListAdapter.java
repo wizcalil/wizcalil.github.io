@@ -130,4 +130,8 @@ public class FeedListAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void clearData(){
+
+        feedItems.clear();
+    }
 }

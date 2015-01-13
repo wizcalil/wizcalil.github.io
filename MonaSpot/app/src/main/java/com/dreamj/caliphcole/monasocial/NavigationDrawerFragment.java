@@ -239,6 +239,7 @@ public class NavigationDrawerFragment extends Fragment {
         if (mDrawerLayout != null && isDrawerOpen()) {
             inflater.inflate(R.menu.global, menu);
             showGlobalContextActionBar();
+
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -251,7 +252,7 @@ public class NavigationDrawerFragment extends Fragment {
         switch(item.getItemId()) {
 
             case R.id.action_example:
-                Toast.makeText(getActivity(), "to do.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Will Be Coming Soon.", Toast.LENGTH_SHORT).show();
 
                 return true;
 
